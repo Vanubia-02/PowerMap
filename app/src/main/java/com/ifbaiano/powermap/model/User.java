@@ -14,6 +14,8 @@ public class User implements Serializable {
 
     private ArrayList<Schedule> schedules;
 
+    private ArrayList<Car> cars;
+
     public String getId() {
         return id;
     }
@@ -67,5 +69,13 @@ public class User implements Serializable {
 
     public void setSchedules(ArrayList<Schedule> schedules) {
         this.schedules = schedules;
+    }
+
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(ArrayList<Car> cars) {
+        this.cars = cars;
     }
 }
