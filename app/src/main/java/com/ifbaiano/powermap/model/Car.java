@@ -9,6 +9,8 @@ public class Car implements  Serializable{
 
     private  String name;
 
+    private CarModel carModel;
+
     public CarModel getCarModel() {
         return carModel;
     }
@@ -17,7 +19,6 @@ public class Car implements  Serializable{
         this.carModel = carModel;
     }
 
-    private CarModel carModel;
 
     public String getId() {
         return id;

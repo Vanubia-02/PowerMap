@@ -28,7 +28,7 @@ public class SqliteConnection extends SQLiteOpenHelper {
             "  INDEX `fk_schedules_users1_idx` (`users_id` ASC) VISIBLE,\n" +
             "  CONSTRAINT `fk_schedules_users1`\n" +
             "    FOREIGN KEY (`users_id`)\n" +
-            "    REFERENCES `powermap`.`users` (`id`)\n" +
+            "    REFERENCES `users` (`id`)\n" +
             "    ON DELETE CASCADE\n" +
             "    ON UPDATE NO ACTION);";
 
@@ -40,7 +40,7 @@ public class SqliteConnection extends SQLiteOpenHelper {
             "  INDEX `fk_cars_users_idx` (`users_id` ASC) VISIBLE,\n" +
             "  CONSTRAINT `fk_cars_users`\n" +
             "    FOREIGN KEY (`users_id`)\n" +
-            "    REFERENCES `powermap`.`users` (`id`)\n" +
+            "    REFERENCES  `users` (`id`)\n" +
             "    ON DELETE  CASCADE\n" +
             "    ON UPDATE NO ACTION);";
 
@@ -56,7 +56,7 @@ public class SqliteConnection extends SQLiteOpenHelper {
             "  INDEX `fk_car_models_cars1_idx` (`cars_id` ASC) VISIBLE,\n" +
             "  CONSTRAINT `fk_car_models_cars1`\n" +
             "    FOREIGN KEY (`cars_id`)\n" +
-            "    REFERENCES `powermap`.`cars` (`id`)\n" +
+            "    REFERENCES `cars` (`id`)\n" +
             "    ON DELETE  CASCADE\n" +
             "    ON UPDATE NO ACTION);";
 

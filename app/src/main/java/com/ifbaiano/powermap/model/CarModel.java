@@ -3,7 +3,7 @@ import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
 
-abstract public class CarModel implements  Serializable{
+abstract public class CarModel implements  Serializable {
 
     @Exclude
     private String id;
