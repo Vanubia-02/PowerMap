@@ -9,6 +9,16 @@ public class Car implements  Serializable{
 
     private  String name;
 
+    public CarModel getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(CarModel carModel) {
+        this.carModel = carModel;
+    }
+
+    private CarModel carModel;
+
     public String getId() {
         return id;
     }
