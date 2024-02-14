@@ -107,7 +107,7 @@ public class ScheduleDaoSqlite implements ScheduleDao {
         values.put("date", schedule.getDate().getTime());
         values.put("description", schedule.getDescription());
         values.put("dayOfWeek", schedule.getDayOfWeek());
-        values.put("getRepetition", schedule.getRepetition());
+        values.put("repetition", schedule.getRepetition());
         return values;
     }
 

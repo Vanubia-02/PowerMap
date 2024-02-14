@@ -6,6 +6,11 @@ import java.io.Serializable;
 public class HybridCarModel extends EletricCarModel {
     private Float fuelConsumption;
 
+    public HybridCarModel(String id, Integer year, String pathImg, Float energyConsumption, Float fuelConsumption) {
+        super(id, year, pathImg, energyConsumption);
+        this.fuelConsumption = fuelConsumption;
+    }
+
     public Float getFuelConsumption() {
         return fuelConsumption;
     }

@@ -10,6 +10,12 @@ abstract public class CarModel implements  Serializable {
     private Integer year;
     private String pathImg;
 
+    public CarModel(String id, Integer year, String pathImg) {
+        this.id = id;
+        this.year = year;
+        this.pathImg = pathImg;
+    }
+
     public String getId() {
         return id;
     }

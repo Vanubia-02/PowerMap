@@ -46,7 +46,6 @@ public class CarDaoSqlite implements CarDao {
         ContentValues values = new ContentValues();
         values.put("name", car.getName());
 
-
         return (this.db.update(this.TABLE_NAME, values, "id = ?",  new String[]{ car.getId() }) > 0) ? car : null;
 
     }
