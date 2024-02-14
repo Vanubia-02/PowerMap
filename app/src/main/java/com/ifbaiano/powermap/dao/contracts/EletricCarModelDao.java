@@ -8,6 +8,10 @@ public interface EletricCarModelDao {
     EletricCarModel add(EletricCarModel carModel);
     EletricCarModel edit(EletricCarModel carModel);
     Boolean remove(EletricCarModel carModel);
-    ArrayList<EletricCarModel> findOne(String id);
+   EletricCarModel findOne(String id);
     ArrayList<EletricCarModel>  findAll();
+    ArrayList<EletricCarModel>  findByCarId(String id);
+
+
+
 }

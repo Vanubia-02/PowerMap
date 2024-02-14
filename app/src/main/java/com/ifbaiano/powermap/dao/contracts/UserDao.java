@@ -8,7 +8,7 @@ public interface UserDao{
     User add(User user);
     User edit(User user);
     Boolean remove(User user);
-    ArrayList<User> findOne(String id);
+     User findOne(String id);
     ArrayList<User>  findAll();
     ArrayList<User>  findAllClients();
     ArrayList<User>  findAllAdmins();
