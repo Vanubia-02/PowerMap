@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.ifbaiano.powermap.connection.SqliteConnection;
 import com.ifbaiano.powermap.dao.contracts.UserDao;
+import com.ifbaiano.powermap.factory.UserFactory;
 import com.ifbaiano.powermap.model.User;
 
 import java.util.ArrayList;
@@ -70,16 +71,7 @@ public class UserDaoSqlite implements UserDao {
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ONE_QUERY, new String[]{id});
 
         if(cursor.moveToFirst()){
-            return new User(
-                    cursor.getString(cursor.getColumnIndexOrThrow("id")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("name")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("email")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("password")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("imgPath")),
-                    cursor.getInt(cursor.getColumnIndexOrThrow("isAdmin")) == 1,
-                    null,
-                    null
-            );
+            return UserFactory.createByCursor(cursor);
         }
 
         return null;
@@ -118,15 +110,7 @@ public class UserDaoSqlite implements UserDao {
     public ArrayList<User> makeUserList(Cursor cursor){
         ArrayList<User> userList = new ArrayList<>();
         while(cursor.moveToNext()) {
-            String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
-            String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-            String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
-            String password = cursor.getString(cursor.getColumnIndexOrThrow("password"));
-            String imgPath = cursor.getString(cursor.getColumnIndexOrThrow("imgPath"));
-            boolean isAdmin = cursor.getInt(cursor.getColumnIndexOrThrow("isAdmin")) == 1;
-
-            User user = new User(id, name, email, password, imgPath, isAdmin, null, null);
-            userList.add(user);
+            userList.add(UserFactory.createByCursor(cursor));
         }
         return userList.size() > 0 ? userList : null;
     }

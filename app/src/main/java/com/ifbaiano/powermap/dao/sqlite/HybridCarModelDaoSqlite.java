@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.ifbaiano.powermap.connection.SqliteConnection;
 import com.ifbaiano.powermap.dao.contracts.HybridCarModelDao;
+import com.ifbaiano.powermap.factory.HybridCarModelFactory;
 import com.ifbaiano.powermap.model.EletricCarModel;
 import com.ifbaiano.powermap.model.HybridCarModel;
 
@@ -57,14 +58,7 @@ public class HybridCarModelDaoSqlite implements HybridCarModelDao {
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ONE_QUERY, new String[]{id});
 
         if(cursor.moveToFirst()){
-            return new HybridCarModel(
-                    cursor.getString(cursor.getColumnIndexOrThrow("id")),
-                    cursor.getInt(cursor.getColumnIndexOrThrow("year")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("pathImg")),
-                    cursor.getFloat(cursor.getColumnIndexOrThrow("energyConsumption")),
-                    cursor.getFloat(cursor.getColumnIndexOrThrow("fuelConsumption"))
-
-            );
+            return HybridCarModelFactory.createByCursor(cursor);
         }
 
         return null;
@@ -97,14 +91,7 @@ public class HybridCarModelDaoSqlite implements HybridCarModelDao {
     public ArrayList<HybridCarModel> makeCarModelList(Cursor cursor){
         ArrayList<HybridCarModel> carModelList = new ArrayList<>();
         while(cursor.moveToNext()) {
-            String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
-            String pathImg = cursor.getString(cursor.getColumnIndexOrThrow("pathImg"));
-            Integer year = cursor.getInt(cursor.getColumnIndexOrThrow("year"));
-            Float energyConsumption = cursor.getFloat(cursor.getColumnIndexOrThrow("energyConsumption"));
-            Float fuelConsumption = cursor.getFloat(cursor.getColumnIndexOrThrow("fuelConsumption"));
-
-            HybridCarModel carModel = new HybridCarModel(id, year, pathImg, energyConsumption, fuelConsumption);
-            carModelList.add(carModel);
+            carModelList.add(HybridCarModelFactory.createByCursor(cursor));
         }
         return carModelList.size() > 0 ? carModelList : null;
     }

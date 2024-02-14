@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.ifbaiano.powermap.connection.SqliteConnection;
 import com.ifbaiano.powermap.dao.contracts.EletricCarModelDao;
+import com.ifbaiano.powermap.factory.EletricCarModelFactory;
 import com.ifbaiano.powermap.model.EletricCarModel;
 
 import java.util.ArrayList;
@@ -55,12 +56,7 @@ public class EletricCarModelDaoSqlite implements EletricCarModelDao {
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ONE_QUERY, new String[]{id});
 
         if(cursor.moveToFirst()){
-            return new EletricCarModel(
-                    cursor.getString(cursor.getColumnIndexOrThrow("id")),
-                    cursor.getInt(cursor.getColumnIndexOrThrow("year")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("pathImg")),
-                    cursor.getFloat(cursor.getColumnIndexOrThrow("energyConsumption"))
-            );
+            return EletricCarModelFactory.createByCursor(cursor);
         }
 
         return null;
@@ -92,12 +88,7 @@ public class EletricCarModelDaoSqlite implements EletricCarModelDao {
     public ArrayList<EletricCarModel> makeCarModelList(Cursor cursor){
         ArrayList<EletricCarModel> carModelList = new ArrayList<>();
         while(cursor.moveToNext()) {
-            String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
-            String pathImg = cursor.getString(cursor.getColumnIndexOrThrow("pathImg"));
-            Integer year = cursor.getInt(cursor.getColumnIndexOrThrow("year"));
-            Float energyConsumption = cursor.getFloat(cursor.getColumnIndexOrThrow("energyConsumption"));
-            EletricCarModel carModel = new EletricCarModel(id, year, pathImg, energyConsumption);
-            carModelList.add(carModel);
+            carModelList.add( EletricCarModelFactory.createByCursor(cursor));
         }
         return carModelList.size() > 0 ? carModelList : null;
     }

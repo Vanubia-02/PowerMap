@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.ifbaiano.powermap.connection.SqliteConnection;
 import com.ifbaiano.powermap.dao.contracts.CarDao;
+import com.ifbaiano.powermap.factory.CarFactory;
 import com.ifbaiano.powermap.model.Car;
 
 import java.util.ArrayList;
@@ -62,11 +63,7 @@ public class CarDaoSqlite implements CarDao {
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ONE_QUERY, new String[]{id});
 
         if(cursor.moveToFirst()){
-            return new Car(
-                    cursor.getString(cursor.getColumnIndexOrThrow("id")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("name")),
-                    null
-            );
+            return CarFactory.createByCursor(cursor);
         }
 
         return null;
@@ -89,11 +86,7 @@ public class CarDaoSqlite implements CarDao {
     public ArrayList<Car> makeCarList(Cursor cursor){
         ArrayList<Car> carList = new ArrayList<>();
         while(cursor.moveToNext()) {
-            String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
-            String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-
-            Car car = new Car(id, name, null);
-            carList.add(car);
+            carList.add(CarFactory.createByCursor(cursor));
         }
         return carList.size() > 0 ? carList : null;
     }

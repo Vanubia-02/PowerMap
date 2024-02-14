@@ -9,6 +9,7 @@ import android.icu.text.SimpleDateFormat;
 
 import com.ifbaiano.powermap.connection.SqliteConnection;
 import com.ifbaiano.powermap.dao.contracts.ScheduleDao;
+import com.ifbaiano.powermap.factory.ScheduleFactory;
 import com.ifbaiano.powermap.model.Schedule;
 
 import java.text.ParseException;
@@ -60,15 +61,7 @@ public class ScheduleDaoSqlite implements ScheduleDao {
 
 
         if(cursor.moveToFirst()){
-            return new Schedule(
-                    cursor.getString(cursor.getColumnIndexOrThrow("id")),
-                    this.castStringToDate(
-                            cursor.getString(cursor.getColumnIndexOrThrow("date"))
-                    ),
-                    cursor.getString(cursor.getColumnIndexOrThrow("description")),
-                    cursor.getInt(cursor.getColumnIndexOrThrow("dayOfWeek")),
-                    cursor.getInt(cursor.getColumnIndexOrThrow("repetition"))
-            );
+           return ScheduleFactory.createByCursor(cursor);
         }
 
         return null;
@@ -91,13 +84,7 @@ public class ScheduleDaoSqlite implements ScheduleDao {
     public ArrayList<Schedule> makeScheduleList(Cursor cursor){
         ArrayList<Schedule> scheduleList = new ArrayList<>();
         while(cursor.moveToNext()) {
-            String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
-            Date date = this.castStringToDate(cursor.getString(cursor.getColumnIndexOrThrow("date")));
-            String description = cursor.getString(cursor.getColumnIndexOrThrow("description"));
-            Integer dayOfWeek = cursor.getInt(cursor.getColumnIndexOrThrow("dayOfWeek"));
-            Integer repetition = cursor.getInt(cursor.getColumnIndexOrThrow("repetition"));
-
-            scheduleList.add(new Schedule(id, date, description, dayOfWeek, repetition));
+            scheduleList.add(ScheduleFactory.createByCursor(cursor));
         }
         return scheduleList.size() > 0 ? scheduleList : null;
     }
@@ -111,16 +98,5 @@ public class ScheduleDaoSqlite implements ScheduleDao {
         return values;
     }
 
-    public Date castStringToDate(String dateString){
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        Date date = null;
-        try {
-            date = dateFormat.parse(dateString);
-        } catch (ParseException e) {
-            return null;
-        }
-
-        return date;
-    }
 }
