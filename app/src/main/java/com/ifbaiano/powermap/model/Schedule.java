@@ -11,6 +11,14 @@ public class Schedule implements  Serializable{
     private String description;
     private Integer dayOfWeek, repetition;
 
+    public Schedule(String id, Date date, String description, Integer dayOfWeek, Integer repetition) {
+        this.id = id;
+        this.date = date;
+        this.description = description;
+        this.dayOfWeek = dayOfWeek;
+        this.repetition = repetition;
+    }
+
     public String getId() {
         return id;
     }

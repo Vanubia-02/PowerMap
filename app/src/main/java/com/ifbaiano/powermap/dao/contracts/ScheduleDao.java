@@ -6,7 +6,7 @@ import com.ifbaiano.powermap.model.User;
 import java.util.ArrayList;
 
 public interface ScheduleDao {
-    Schedule add(Schedule schedule);
+    Schedule add(Schedule schedule, String userId);
     Schedule edit(Schedule schedule);
     Boolean remove(Schedule schedule);
     Schedule findOne(String id);
