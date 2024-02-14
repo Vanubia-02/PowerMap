@@ -12,8 +12,10 @@ public class User implements Serializable {
     private String name, email, password, imgPath;
     private boolean isAdmin;
 
+    @Exclude
     private ArrayList<Schedule> schedules;
 
+    @Exclude
     private ArrayList<Car> cars;
 
     public User(String id, String name, String email, String password, String imgPath, boolean isAdmin, ArrayList<Schedule> schedules, ArrayList<Car> cars) {

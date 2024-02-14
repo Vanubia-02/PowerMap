@@ -19,8 +19,9 @@ public class UserDaoSqlite implements UserDao {
     private final String TABLE_NAME = "users";
     private final String FIND_ONE_QUERY = "SELECT * FROM "+ this.TABLE_NAME +" WHERE id = ?";
     private final String FIND_ALL_QUERY = "SELECT * FROM " + this.TABLE_NAME;
-    private final String FIND_ALL_CLIENT_QUERY = "SELECT * FROM "+ this.TABLE_NAME +" WHERE isAdmin = 0";
-    private final String FIND_ALL_ADMIN_QUERY = "SELECT * FROM "+ this.TABLE_NAME +" WHERE isAdmin = 1";
+    private final String FIND_ALL_FILTER_QUERY = "SELECT * FROM "+ this.TABLE_NAME +" WHERE isAdmin = ? ";
+    private final String ADMIN = "1";
+    private final String CLIENT = "0";
 
 
     public UserDaoSqlite(Context ctx) {
@@ -94,14 +95,14 @@ public class UserDaoSqlite implements UserDao {
     @Override
     public ArrayList<User> findAllClients() {
         this.db = this.conn.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_CLIENT_QUERY, null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY, new String[]{ this.CLIENT } );
         return this.makeUserList(cursor);
     }
 
     @Override
     public ArrayList<User> findAllAdmins() {
         this.db = this.conn.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_ADMIN_QUERY, null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY,  new String[]{ this.ADMIN });
         return this.makeUserList(cursor);
     }
 

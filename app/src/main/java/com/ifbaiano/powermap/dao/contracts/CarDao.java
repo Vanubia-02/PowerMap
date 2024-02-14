@@ -6,7 +6,7 @@ import com.ifbaiano.powermap.model.User;
 import java.util.ArrayList;
 
 public interface CarDao {
-    Car add(Car car);
+    Car add(Car car, String userId);
     Car edit(Car car);
     Boolean remove(Car car);
     Car findOne(String id);

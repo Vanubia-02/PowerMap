@@ -9,7 +9,14 @@ public class Car implements  Serializable{
 
     private  String name;
 
+    @Exclude
     private CarModel carModel;
+
+    public Car(String id, String name, CarModel carModel) {
+        this.id = id;
+        this.name = name;
+        this.carModel = carModel;
+    }
 
     public CarModel getCarModel() {
         return carModel;
