@@ -9,7 +9,7 @@ public class User implements Serializable {
     @Exclude
     private String id;
 
-    private String name, email, password, imgpath;
+    private String name, email, password, imgPath;
     private boolean isAdmin;
 
     private ArrayList<Schedule> schedules;
@@ -48,11 +48,11 @@ public class User implements Serializable {
     }
 
     public String getImgpath() {
-        return imgpath;
+        return this.imgPath;
     }
 
-    public void setImgpath(String imgpath) {
-        this.imgpath = imgpath;
+    public void setImgpath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     public boolean isAdmin() {

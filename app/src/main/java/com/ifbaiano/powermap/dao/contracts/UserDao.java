@@ -12,6 +12,6 @@ public interface UserDao{
     ArrayList<User>  findAll();
     ArrayList<User>  findAllClients();
     ArrayList<User>  findAllAdmins();
-    Boolean changePassword(User user, String id);
+    Boolean changePassword(User user, String password);
 
 }
