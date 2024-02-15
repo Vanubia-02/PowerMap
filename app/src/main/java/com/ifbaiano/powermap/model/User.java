@@ -18,6 +18,8 @@ public class User implements Serializable {
     @Exclude
     private ArrayList<Car> cars;
 
+    public User(){}
+
     public User(String id, String name, String email, String password, String imgPath, boolean isAdmin, ArrayList<Schedule> schedules, ArrayList<Car> cars) {
         this.id = id;
         this.name = name;

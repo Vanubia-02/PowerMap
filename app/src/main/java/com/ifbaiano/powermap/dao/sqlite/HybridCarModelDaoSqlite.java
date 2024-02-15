@@ -19,9 +19,10 @@ public class HybridCarModelDaoSqlite implements HybridCarModelDao {
     private final SqliteConnection conn;
     private SQLiteDatabase db;
     private final String TABLE_NAME = "car_models";
-    private final String FIND_ONE_QUERY = "SELECT * FROM "+ this.TABLE_NAME +" WHERE id = ?";
-    private final String FIND_ALL_QUERY =  "SELECT * FROM "+ this.TABLE_NAME;
-    private final String FIND_BY_CAR_QUERY =  "SELECT * FROM "+ this.TABLE_NAME + " WHERE cars_id = ?";
+    private final String HYBRID_FILTER = "fuelConsumption IS NOT NULL";
+    private final String FIND_ONE_QUERY = "SELECT * FROM "+ this.TABLE_NAME +" WHERE id = ? AND " + this.HYBRID_FILTER;
+    private final String FIND_ALL_QUERY =  "SELECT * FROM "+ this.TABLE_NAME + " WHERE " + this.HYBRID_FILTER;
+    private final String FIND_BY_CAR_QUERY =  "SELECT * FROM "+ this.TABLE_NAME + " WHERE cars_id = ? AND " + this.HYBRID_FILTER;
 
     public HybridCarModelDaoSqlite(Context ctx) {
         this.conn = new SqliteConnection(ctx);

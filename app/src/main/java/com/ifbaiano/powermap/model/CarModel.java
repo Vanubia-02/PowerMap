@@ -16,6 +16,9 @@ abstract public class CarModel implements  Serializable {
         this.pathImg = pathImg;
     }
 
+    public CarModel() {
+    }
+
     public String getId() {
         return id;
     }

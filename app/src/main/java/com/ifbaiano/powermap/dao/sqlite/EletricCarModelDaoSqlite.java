@@ -18,9 +18,10 @@ public class EletricCarModelDaoSqlite implements EletricCarModelDao {
     private final SqliteConnection conn;
     private SQLiteDatabase db;
     private final String TABLE_NAME = "car_models";
-    private final String FIND_ONE_QUERY = "SELECT * FROM "+ this.TABLE_NAME +" WHERE id = ?";
-    private final String FIND_ALL_QUERY =  "SELECT * FROM "+ this.TABLE_NAME;
-    private final String FIND_BY_CAR_QUERY =  "SELECT * FROM "+ this.TABLE_NAME + " WHERE cars_id = ?";
+    private final String ELETRIC_FILTER = "fuelConsumption IS NULL";
+    private final String FIND_ONE_QUERY = "SELECT * FROM "+ this.TABLE_NAME +" WHERE id = ? AND " + this.ELETRIC_FILTER;
+    private final String FIND_ALL_QUERY =  "SELECT * FROM "+ this.TABLE_NAME + " WHERE " + this.ELETRIC_FILTER;
+    private final String FIND_BY_CAR_QUERY =  "SELECT * FROM "+ this.TABLE_NAME + " WHERE cars_id = ? AND " + this.ELETRIC_FILTER;
 
     public EletricCarModelDaoSqlite(Context ctx) {
         this.conn = new SqliteConnection(ctx);
