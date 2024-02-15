@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.ifbaiano.powermap.connection.SqliteConnection;
+import com.ifbaiano.powermap.dao.contracts.DataCallback;
 import com.ifbaiano.powermap.dao.contracts.EletricCarModelDao;
 import com.ifbaiano.powermap.factory.EletricCarModelFactory;
 import com.ifbaiano.powermap.model.EletricCarModel;
@@ -63,17 +64,28 @@ public class EletricCarModelDaoSqlite implements EletricCarModelDao {
     }
 
     @Override
-    public ArrayList<EletricCarModel> findAll() {
-        this.db = this.conn.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_QUERY, null);
-        return this.makeCarModelList(cursor);
+    public void findAll(DataCallback<EletricCarModel> callback) {
+        try {
+            this.db = this.conn.getWritableDatabase();
+            @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_QUERY, null);
+            callback.onDataLoaded(this.makeCarModelList(cursor));
+        }
+        catch (Exception e){
+            callback.onError("Não foi possível listar os modelos de carros eletrícos!");
+        }
+
     }
 
     @Override
-    public ArrayList<EletricCarModel> findByCarId(String id) {
-        this.db = this.conn.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_BY_CAR_QUERY, new String[]{ id });
-        return this.makeCarModelList(cursor);
+    public void findByCarId(String id, DataCallback<EletricCarModel> callback) {
+        try {
+            this.db = this.conn.getWritableDatabase();
+            @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_BY_CAR_QUERY, new String[]{ id });
+            callback.onDataLoaded(this.makeCarModelList(cursor));
+        }
+        catch (Exception e){
+            callback.onError("Não foi possível listar os modelos deste carro!");
+        }
     }
 
     public ContentValues makeContentValues(EletricCarModel carModel){

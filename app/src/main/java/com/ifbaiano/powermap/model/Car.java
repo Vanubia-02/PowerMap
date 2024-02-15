@@ -18,6 +18,9 @@ public class Car implements  Serializable{
         this.carModel = carModel;
     }
 
+    public Car() {
+    }
+
     public CarModel getCarModel() {
         return carModel;
     }

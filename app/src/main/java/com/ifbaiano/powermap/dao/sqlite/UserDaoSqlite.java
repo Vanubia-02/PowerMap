@@ -6,7 +6,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import androidx.annotation.Nullable;
+
 import com.ifbaiano.powermap.connection.SqliteConnection;
+import com.ifbaiano.powermap.dao.contracts.DataCallback;
 import com.ifbaiano.powermap.dao.contracts.UserDao;
 import com.ifbaiano.powermap.factory.UserFactory;
 import com.ifbaiano.powermap.model.User;
@@ -78,24 +81,39 @@ public class UserDaoSqlite implements UserDao {
     }
 
     @Override
-    public ArrayList<User> findAll() {
-        this.db = this.conn.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_QUERY, null);
-        return this.makeUserList(cursor);
+    public void findAll(DataCallback<User> callback) {
+       try {
+           this.db = this.conn.getWritableDatabase();
+           @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_QUERY, null);
+           callback.onDataLoaded(this.makeUserList(cursor));
+       }
+       catch (Exception e){
+           callback.onError("Não foi possível listar todos os usuários!");
+       }
     }
 
     @Override
-    public ArrayList<User> findAllClients() {
-        this.db = this.conn.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY, new String[]{ this.CLIENT } );
-        return this.makeUserList(cursor);
+    public void findAllClients(DataCallback<User> callback) {
+        try {
+            this.db = this.conn.getWritableDatabase();
+            @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY, new String[]{ this.CLIENT } );
+            callback.onDataLoaded(this.makeUserList(cursor));
+        }
+        catch (Exception e){
+            callback.onError("Não foi possível listar os clientes!");
+        }
     }
 
     @Override
-    public ArrayList<User> findAllAdmins() {
-        this.db = this.conn.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY,  new String[]{ this.ADMIN });
-        return this.makeUserList(cursor);
+    public void findAllAdmins(DataCallback<User> callback) {
+        try {
+            this.db = this.conn.getWritableDatabase();
+            @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY,  new String[]{ this.ADMIN });
+            callback.onDataLoaded(this.makeUserList(cursor));
+        }
+        catch (Exception e){
+            callback.onError("Não foi possível listar os administradores!");
+        }
     }
 
     @Override

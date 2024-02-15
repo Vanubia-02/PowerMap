@@ -8,10 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.ifbaiano.powermap.connection.SqliteConnection;
 import com.ifbaiano.powermap.dao.contracts.CarDao;
+import com.ifbaiano.powermap.dao.contracts.DataCallback;
 import com.ifbaiano.powermap.factory.CarFactory;
 import com.ifbaiano.powermap.model.Car;
 
 import java.util.ArrayList;
+
+import javax.annotation.Nullable;
 
 public class CarDaoSqlite implements CarDao {
 

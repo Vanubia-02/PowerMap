@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "936668570280",
+    "project_id": "powermap-a0b10",
+    "storage_bucket": "powermap-a0b10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936668570280:android:fec3c36a77d42d89a6989d",
+        "android_client_info": {
+          "package_name": "com.ifbaiano.powermap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiq7Di-Ecj36tYiF_v2kd69e6_1p-sHgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

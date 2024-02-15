@@ -11,7 +11,7 @@ public interface HybridCarModelDao {
     HybridCarModel edit(HybridCarModel carModel);
     Boolean remove(HybridCarModel carModel);
     HybridCarModel findOne(String id);
-    ArrayList<HybridCarModel>  findAll();
-    ArrayList<HybridCarModel>  findByCarId(String id);
+    void findAll(DataCallback<HybridCarModel> callback);
+    void findByCarId(String id, DataCallback<HybridCarModel> callback);
 
 }
