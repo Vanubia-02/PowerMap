@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/sub_background_form" /> <!-- Cor de fundo escura -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/sub_background_form" />
+    <corners
+        android:topLeftRadius="30dp" android:topRightRadius="30dp" android:bottomLeftRadius="30dp" android:bottomRightRadius="30dp"  />
+</shape>

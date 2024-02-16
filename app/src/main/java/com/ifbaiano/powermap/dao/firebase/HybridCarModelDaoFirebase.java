@@ -4,6 +4,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -12,15 +14,19 @@ import com.google.firebase.database.ValueEventListener;
 import com.ifbaiano.powermap.dao.contracts.DataCallback;
 import com.ifbaiano.powermap.dao.contracts.HybridCarModelDao;
 import com.ifbaiano.powermap.model.HybridCarModel;
+import com.ifbaiano.powermap.model.User;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class HybridCarModelDaoFirebase implements HybridCarModelDao {
 
     private final String TABLE_NAME = "hybrid_car_models";
     private final FirebaseDatabase firebaseDatabase;
 
-    public HybridCarModelDaoFirebase() {
+    public HybridCarModelDaoFirebase(Context ctx) {
+
+        FirebaseApp.initializeApp(ctx);
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
@@ -61,43 +67,44 @@ public class HybridCarModelDaoFirebase implements HybridCarModelDao {
     }
 
     @Override
-    public void findAll(DataCallback<HybridCarModel> callback) {
+    public ArrayList<HybridCarModel> findAll() {
         Query query = firebaseDatabase.getReference(TABLE_NAME).orderByChild("year");;
-        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    ArrayList<HybridCarModel> allCarModels = new ArrayList<>();
-                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        HybridCarModel carModel = snapshot.getValue(HybridCarModel.class);
-                        allCarModels.add(carModel);
-                    }
-                    callback.onDataLoaded(allCarModels);
-                } else {
-                    callback.onError("Erro ao carregar os modelos de carros híbridos: " + task.getException().getMessage());
+        try {
+            DataSnapshot dataSnapshot = Tasks.await(query.get());
+
+            if (dataSnapshot.exists()) {
+                ArrayList<HybridCarModel> carModels = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HybridCarModel carModel = snapshot.getValue(HybridCarModel.class);
+                    carModels.add(carModel);
                 }
+                return carModels;
             }
-        });
+            return null;
+        } catch (ExecutionException | InterruptedException e) {
+            return null;
+        }
     }
 
     @Override
-    public void findByCarId(final String carId, final DataCallback<HybridCarModel> callback) {
+    public ArrayList<HybridCarModel> findByCarId(final String carId) {
         Query query = firebaseDatabase.getReference(TABLE_NAME).
                 orderByChild("cars_id").equalTo(carId);
-        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    ArrayList<HybridCarModel> carModels = new ArrayList<>();
-                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        HybridCarModel carModel = snapshot.getValue(HybridCarModel.class);
-                        carModels.add(carModel);
-                    }
-                    callback.onDataLoaded(carModels);
-                } else {
-                    callback.onError("Erro ao buscar os modelos de carros híbridos por ID de carro: " + task.getException().getMessage());
+
+        try {
+            DataSnapshot dataSnapshot = Tasks.await(query.get());
+
+            if (dataSnapshot.exists()) {
+                ArrayList<HybridCarModel> carModels = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HybridCarModel carModel = snapshot.getValue(HybridCarModel.class);
+                    carModels.add(carModel);
                 }
+                return carModels;
             }
-        });
+            return null;
+        } catch (ExecutionException | InterruptedException e) {
+            return null;
+        }
     }
 }

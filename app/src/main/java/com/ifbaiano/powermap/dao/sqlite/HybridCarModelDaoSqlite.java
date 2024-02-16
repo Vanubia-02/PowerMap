@@ -67,28 +67,18 @@ public class HybridCarModelDaoSqlite implements HybridCarModelDao {
     }
 
     @Override
-    public void findAll(DataCallback<HybridCarModel> callback) {
-        try {
+    public ArrayList<HybridCarModel> findAll() {
             this.db = this.conn.getWritableDatabase();
             @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_QUERY, null);
-            callback.onDataLoaded(this.makeCarModelList(cursor));
-        }
-        catch (Exception e){
-            callback.onError("Não foi possível listar os modelos de carros hibrídos!");
-        }
-
+            return this.makeCarModelList(cursor);
     }
 
     @Override
-    public void findByCarId(String id, DataCallback<HybridCarModel> callback) {
-        try {
+    public ArrayList<HybridCarModel> findByCarId(String id) {
             this.db = this.conn.getWritableDatabase();
             @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_BY_CAR_QUERY, new String[]{ id });
-            callback.onDataLoaded(this.makeCarModelList(cursor));
-        }
-        catch (Exception e){
-            callback.onError("Não foi possível listar os modelos deste carro!");
-        }
+
+            return this.makeCarModelList(cursor);
     }
 
     public ContentValues makeContentValues(HybridCarModel carModel){

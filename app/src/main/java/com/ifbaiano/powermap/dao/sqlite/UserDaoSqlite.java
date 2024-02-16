@@ -81,39 +81,24 @@ public class UserDaoSqlite implements UserDao {
     }
 
     @Override
-    public void findAll(DataCallback<User> callback) {
-       try {
+    public ArrayList<User> findAll() {
            this.db = this.conn.getWritableDatabase();
            @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_QUERY, null);
-           callback.onDataLoaded(this.makeUserList(cursor));
-       }
-       catch (Exception e){
-           callback.onError("Não foi possível listar todos os usuários!");
-       }
+           return this.makeUserList(cursor);
     }
 
     @Override
-    public void findAllClients(DataCallback<User> callback) {
-        try {
-            this.db = this.conn.getWritableDatabase();
-            @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY, new String[]{ this.CLIENT } );
-            callback.onDataLoaded(this.makeUserList(cursor));
-        }
-        catch (Exception e){
-            callback.onError("Não foi possível listar os clientes!");
-        }
+    public ArrayList<User> findAllClients() {
+        this.db = this.conn.getWritableDatabase();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY, new String[]{ this.CLIENT } );
+        return this.makeUserList(cursor);
     }
 
     @Override
-    public void findAllAdmins(DataCallback<User> callback) {
-        try {
-            this.db = this.conn.getWritableDatabase();
-            @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY,  new String[]{ this.ADMIN });
-            callback.onDataLoaded(this.makeUserList(cursor));
-        }
-        catch (Exception e){
-            callback.onError("Não foi possível listar os administradores!");
-        }
+    public ArrayList<User> findAllAdmins() {
+        this.db = this.conn.getWritableDatabase();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(this.FIND_ALL_FILTER_QUERY,  new String[]{ this.ADMIN });
+        return this.makeUserList(cursor);
     }
 
     @Override

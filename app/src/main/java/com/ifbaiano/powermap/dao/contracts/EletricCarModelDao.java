@@ -9,8 +9,8 @@ public interface EletricCarModelDao {
     EletricCarModel edit(EletricCarModel carModel);
     Boolean remove(EletricCarModel carModel);
     EletricCarModel findOne(String id);
-    void  findAll(DataCallback<EletricCarModel> callback);
-    void  findByCarId(String id, DataCallback<EletricCarModel> callback);
+    ArrayList<EletricCarModel> findAll();
+    ArrayList<EletricCarModel> findByCarId(String id);
 
 
 

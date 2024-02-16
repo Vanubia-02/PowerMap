@@ -10,8 +10,8 @@ public class EletricCarModel extends CarModel {
         super();
     }
 
-    public EletricCarModel(String id, Integer year, String pathImg, Float energyConsumption) {
-        super(id, year, pathImg);
+    public EletricCarModel(String id, String name, Integer year, String pathImg, Float energyConsumption) {
+        super(id,name, year, pathImg);
         this.energyConsumption = energyConsumption;
     }
 

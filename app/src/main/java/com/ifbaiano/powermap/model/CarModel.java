@@ -7,12 +7,14 @@ abstract public class CarModel implements  Serializable {
 
     @Exclude
     private String id;
+    private String name;
     private Integer year;
     private String pathImg;
 
-    public CarModel(String id, Integer year, String pathImg) {
+    public CarModel(String id, String name, Integer year, String pathImg) {
         this.id = id;
         this.year = year;
+        this.name = name;
         this.pathImg = pathImg;
     }
 
@@ -43,4 +45,11 @@ abstract public class CarModel implements  Serializable {
         this.pathImg = pathImg;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

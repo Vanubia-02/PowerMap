@@ -4,6 +4,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -14,6 +16,7 @@ import com.ifbaiano.powermap.dao.contracts.UserDao;
 import com.ifbaiano.powermap.factory.UserFactory;
 import com.ifbaiano.powermap.model.User;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class UserDaoFirebase implements UserDao {
 
@@ -21,6 +24,8 @@ public class UserDaoFirebase implements UserDao {
     private final FirebaseDatabase firebaseDatabase;
 
     public UserDaoFirebase(Context ctx) {
+
+        FirebaseApp.initializeApp(ctx);
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
@@ -61,63 +66,63 @@ public class UserDaoFirebase implements UserDao {
     }
 
     @Override
-    public void findAll(DataCallback<User> callback) {
+    public ArrayList<User>  findAll() {
         Query query = firebaseDatabase.getReference(TABLE_NAME);
-        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    ArrayList<User> allUsers = new ArrayList<>();
-                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        User user = snapshot.getValue(User.class);
-                        allUsers.add(user);
-                    }
-                    callback.onDataLoaded(allUsers);
-                } else {
-                    callback.onError("Erro ao carregar os usuários: " + task.getException().getMessage());
+        try {
+            DataSnapshot dataSnapshot = Tasks.await(query.get());
+
+            if (dataSnapshot.exists()) {
+                ArrayList<User> allUsers = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User user = snapshot.getValue(User.class);
+                    allUsers.add(user);
                 }
+                return allUsers;
             }
-        });
+            return null;
+        } catch (ExecutionException | InterruptedException e) {
+            return null;
+        }
     }
 
     @Override
-    public void findAllClients(DataCallback<User> callback) {
+    public ArrayList<User> findAllClients() {
         Query query = firebaseDatabase.getReference(TABLE_NAME).orderByChild("isAdmin").equalTo(false);
-        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    ArrayList<User> clients = new ArrayList<>();
-                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        User user = snapshot.getValue(User.class);
-                        clients.add(user);
-                    }
-                    callback.onDataLoaded(clients);
-                } else {
-                    callback.onError("Erro ao carregar os clientes: " + task.getException().getMessage());
+        try {
+            DataSnapshot dataSnapshot = Tasks.await(query.get());
+
+            if (dataSnapshot.exists()) {
+                ArrayList<User> allUsers = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User user = snapshot.getValue(User.class);
+                    allUsers.add(user);
                 }
+                return allUsers;
             }
-        });
+            return null;
+        } catch (ExecutionException | InterruptedException e) {
+            return null;
+        }
     }
 
     @Override
-    public void findAllAdmins(DataCallback<User> callback) {
+    public ArrayList<User> findAllAdmins() {
         Query query = firebaseDatabase.getReference(TABLE_NAME).orderByChild("isAdmin").equalTo(true);
-        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    ArrayList<User> admins = new ArrayList<>();
-                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        User user = snapshot.getValue(User.class);
-                        admins.add(user);
-                    }
-                    callback.onDataLoaded(admins);
-                } else {
-                    callback.onError("Erro ao carregar os administradores: " + task.getException().getMessage());
+        try {
+            DataSnapshot dataSnapshot = Tasks.await(query.get());
+
+            if (dataSnapshot.exists()) {
+                ArrayList<User> allUsers = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User user = snapshot.getValue(User.class);
+                    allUsers.add(user);
                 }
+                return allUsers;
             }
-        });
+            return null;
+        } catch (ExecutionException | InterruptedException e) {
+            return null;
+        }
     }
 
     @Override

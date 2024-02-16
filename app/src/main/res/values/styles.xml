@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+    <style name="EditTextWithBorderBlack" parent="@android:style/Theme.Light">
+        <item name="android:layout_marginLeft">40dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@drawable/form_border_black</item>
+        <item name="android:textColorHint">@color/sub_background_form</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="RadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/sub_background_form</item>
+        <item name="android:textColorSecondary">@color/sub_background_form_lighter</item>
+        <item name="colorControlNormal">@color/sub_background_form_lighter</item>
+    </style>
+
+</resources>
+

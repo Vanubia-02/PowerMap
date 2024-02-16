@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="sub_background_form">#2C2739</color>
+    <color name="sub_background_form_lighter">#44404E</color>
+    <color name="red_custom">#E30C0C</color>
+
 </resources>

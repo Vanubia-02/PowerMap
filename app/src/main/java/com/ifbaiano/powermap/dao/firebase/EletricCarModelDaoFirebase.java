@@ -4,6 +4,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -12,16 +14,18 @@ import com.google.firebase.database.ValueEventListener;
 import com.ifbaiano.powermap.dao.contracts.DataCallback;
 import com.ifbaiano.powermap.dao.contracts.EletricCarModelDao;
 import com.ifbaiano.powermap.model.EletricCarModel;
-import com.ifbaiano.powermap.model.User;
+import com.ifbaiano.powermap.model.HybridCarModel;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class EletricCarModelDaoFirebase implements EletricCarModelDao {
 
     private final String TABLE_NAME = "electric_car_models";
     private final FirebaseDatabase firebaseDatabase;
 
-    public EletricCarModelDaoFirebase() {
+    public EletricCarModelDaoFirebase(Context ctx) {
+        FirebaseApp.initializeApp(ctx);
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
@@ -62,44 +66,46 @@ public class EletricCarModelDaoFirebase implements EletricCarModelDao {
     }
 
     @Override
-    public void findAll(DataCallback< EletricCarModel> callback) {
+    public  ArrayList<EletricCarModel> findAll() {
         Query query = firebaseDatabase.getReference(TABLE_NAME);
-        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    ArrayList<EletricCarModel> allCarModels = new ArrayList<>();
-                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        EletricCarModel carModel = snapshot.getValue(EletricCarModel.class);
-                        allCarModels.add(carModel);
-                    }
-                    callback.onDataLoaded(allCarModels);
-                } else {
-                    callback.onError("Erro ao carregar os modelos de carros elétricos: " + task.getException().getMessage());
+        try {
+            DataSnapshot dataSnapshot = Tasks.await(query.get());
+
+            if (dataSnapshot.exists()) {
+                ArrayList<EletricCarModel> carModels = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    EletricCarModel carModel = snapshot.getValue(EletricCarModel.class);
+                    carModels.add(carModel);
                 }
+                return carModels;
             }
-        });
+            return null;
+        } catch (ExecutionException | InterruptedException e) {
+            return null;
+        }
     }
 
 
     @Override
-    public void findByCarId(final String carId, final DataCallback<EletricCarModel> callback) {
+    public  ArrayList<EletricCarModel> findByCarId(final String carId) {
         Query query = firebaseDatabase.getReference(TABLE_NAME).
                 orderByChild("cars_id");
-        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    ArrayList<EletricCarModel> carModels = new ArrayList<>();
-                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        EletricCarModel carModel = snapshot.getValue(EletricCarModel.class);
-                        carModels.add(carModel);
-                    }
-                    callback.onDataLoaded(carModels);
-                } else {
-                    callback.onError("Erro ao buscar os modelos de carros elétricos por ID de carro: " + task.getException().getMessage());
+
+        try {
+            DataSnapshot dataSnapshot = Tasks.await(query.get());
+
+            if (dataSnapshot.exists()) {
+                ArrayList<EletricCarModel> carModels = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    EletricCarModel carModel = snapshot.getValue(EletricCarModel.class);
+                    carModels.add(carModel);
                 }
+                return carModels;
             }
-        });
+            return null;
+        } catch (ExecutionException | InterruptedException e) {
+            return null;
+        }
+
     }
 }

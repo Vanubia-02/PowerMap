@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.carModel.AddCarModelActivity"
+    android:background="@color/sub_background_form">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/backButon"
+        android:layout_width="49dp"
+        android:layout_marginStart="15px"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:contentDescription=""
+        android:drawableEnd="@drawable/baseline_arrow_back_24"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submitImage"
+        android:layout_width="50dp"
+        android:layout_height="41dp"
+        android:contentDescription="Enter How Much Cookies You Want"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/button_submit_image"
+        android:paddingStart="13dp"
+        android:paddingBottom="12dp"
+
+        android:drawableBottom="@drawable/baseline_add_photo_alternate_24" />
+    <View
+        android:id="@+id/rounded_top_corners_view"
+        android:layout_width="match_parent"
+        android:layout_height="595dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="139dp"
+        android:layout_marginBottom="-3dp"
+        android:background="@drawable/form_container" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="265dp"
+        android:layout_height="200dp"
+        android:layout_above="@+id/name"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp"
+        android:layout_marginBottom="-64dp"
+        android:src="@drawable/img_byddolphin01" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/name"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_alignTop="@+id/rounded_top_corners_view"
+        android:layout_marginTop="100dp"
+        android:drawableEnd="@drawable/baseline_directions_car_24"
+        android:hint="@string/name_input"
+        android:inputType="text"
+        android:singleLine="true" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/year"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_alignTop="@+id/name"
+        android:layout_marginTop="83dp"
+        android:drawableRight="@drawable/baseline_calendar_today_24"
+        android:hint="@string/year_input"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/type"
+
+        android:layout_alignTop="@id/year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="83dp"
+        android:layout_marginStart="60px"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/hybrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/hybrid"
+            android:theme="@style/RadioButton"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/eletric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/eletric"
+            android:theme="@style/RadioButton"
+            android:onClick="onRadioButtonClicked"/>
+
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/energyConsumption"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_alignTop="@+id/type"
+        android:layout_marginTop="83dp"
+        android:drawableRight="@drawable/baseline_electric_bolt_24"
+        android:hint="@string/energy_consumption_input"
+        android:inputType="numberDecimal"
+        android:singleLine="true" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/fuelConsumption"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_alignTop="@+id/energyConsumption"
+        android:layout_marginTop="83dp"
+        android:drawableRight="@drawable/baseline_local_gas_station_24"
+        android:hint="@string/fuel_consumption_input"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submitForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/fuelConsumption"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:padding="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/button_rounded_dark"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        android:hint="@string/add" />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/fuelConsumption"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:padding="5dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/button_rounded_dark"
+        android:textSize="20dp"
+        android:indeterminateTint="@color/white"
+        android:hint="@string/add" />
+    
+
+</RelativeLayout>
