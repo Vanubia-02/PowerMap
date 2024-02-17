@@ -27,6 +27,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -42,5 +46,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-
+    //Glide Libary
+    implementation("com.github.bumptech.glide:glide:4.14.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.1")
 }
+
+

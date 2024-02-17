@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/icon_car_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/car"
+        android:icon="@drawable/baseline_car"/>
+
+    <item
+        android:id="@+id/icon_map_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/map"
+        android:icon="@drawable/baseline_map"/>
+    <item
+        android:id="@+id/icon_schedule_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/schedule"
+        android:icon="@drawable/baseline_schedule"/>
+    <item
+        android:id="@+id/icon_profile_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/profile"
+        android:icon="@drawable/baseline_profile"/>
+</menu>

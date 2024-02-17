@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/icon_car_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/models"
+        android:icon="@drawable/baseline_car"/>
+
+    <item
+        android:id="@+id/icon_useres_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/users"
+        android:icon="@drawable/baseline_users"/>
+
+    <item
+        android:id="@+id/icon_profile_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/profile"
+        android:icon="@drawable/baseline_profile"/>
+</menu>

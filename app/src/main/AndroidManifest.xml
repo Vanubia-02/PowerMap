@@ -17,13 +17,17 @@
         android:theme="@style/Theme.PowerMap"
         tools:targetApi="31">
         <activity
-            android:name=".activity.carModel.ListCarModels"
-            android:exported="false" />
-        <activity
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.carModel.ListCarModels"
+            android:exported="false" />
+        <activity
             android:name=".activity.carModel.AddCarModelActivity"
+            android:exported="false" />
+        <activity
+
+            android:name=".activity.MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
