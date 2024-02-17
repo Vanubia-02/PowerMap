@@ -9,15 +9,16 @@
     <string name="image_button">Botão de Adicionar Imagem</string>
 
     <string name="error_data">Houve um errro na submissão de dados! Tente novamanete mais tarde.</string>
+    <string name="image_not_found">Imagem não encontrada!</string>
+
     <!-- Car Model-->
     <string name="eletric">Elétrico </string>
     <string name="hybrid">Hibrído</string>
-
     <string name="name_input">Digite o nome do modelo…</string>
     <string name="year_input">Digite o ano do modelo…</string>
     <string name="energy_consumption_input">Consumo de Energia KwH/km…</string>
     <string name="fuel_consumption_input">Consumo de Combustível Litro/km…</string>
-
+    <string name="wrong_year_error">O ano informado é inválido!</string>
     <string name="image_error">É necessário informar uma imagem! </string>
     <string name="name_error">É necessário informar o nome! </string>
     <string name="year_error">É necessário informar o ano! </string>

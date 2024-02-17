@@ -7,10 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.ifbaiano.powermap.connection.SqliteConnection;
-import com.ifbaiano.powermap.dao.contracts.DataCallback;
 import com.ifbaiano.powermap.dao.contracts.HybridCarModelDao;
 import com.ifbaiano.powermap.factory.HybridCarModelFactory;
-import com.ifbaiano.powermap.model.EletricCarModel;
 import com.ifbaiano.powermap.model.HybridCarModel;
 
 import java.util.ArrayList;

@@ -1,18 +1,20 @@
-package com.ifbaiano.powermap.verifyer;
+package com.ifbaiano.powermap.verifier;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.ifbaiano.powermap.R;
 
-public class Verifyer {
+import java.time.Year;
+import java.util.Objects;
+
+public class Verifier {
     private Context ctx;
 
-    public Verifyer(Context ctx) {
+    public Verifier(Context ctx) {
         this.ctx = ctx;
     }
 
@@ -31,6 +33,19 @@ public class Verifyer {
         }
         return true;
     }
+
+    public boolean validateYear(TextInputEditText year, int errorMessageResId) {
+        if (!year.getText().toString().isEmpty()) {
+            int inputYear = Integer.valueOf(year.getText().toString());
+            int currentYear = Year.now().getValue();
+            if (inputYear > currentYear) {
+                year.setError(this.getCtx().getString(errorMessageResId));
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     protected boolean validateImage(boolean field, AppCompatButton imgBtn, int errorMessageResId){
         if (!field){

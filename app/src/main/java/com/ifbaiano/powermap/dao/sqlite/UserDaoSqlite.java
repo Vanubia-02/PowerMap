@@ -6,10 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import androidx.annotation.Nullable;
-
 import com.ifbaiano.powermap.connection.SqliteConnection;
-import com.ifbaiano.powermap.dao.contracts.DataCallback;
 import com.ifbaiano.powermap.dao.contracts.UserDao;
 import com.ifbaiano.powermap.factory.UserFactory;
 import com.ifbaiano.powermap.model.User;

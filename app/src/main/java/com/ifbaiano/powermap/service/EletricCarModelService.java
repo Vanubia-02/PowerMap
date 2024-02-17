@@ -1,20 +1,20 @@
 package com.ifbaiano.powermap.service;
 
-import android.util.Log;
-
 import com.ifbaiano.powermap.dao.contracts.EletricCarModelDao;
-import com.ifbaiano.powermap.dao.firebase.FirebaseStorageDao;
+import com.ifbaiano.powermap.dao.contracts.StorageDao;
 import com.ifbaiano.powermap.model.EletricCarModel;
 
 public class EletricCarModelService {
     private EletricCarModelDao dao;
+    private final StorageDao storageDao;
 
-    public EletricCarModelService(EletricCarModelDao dao) {
+    public EletricCarModelService(EletricCarModelDao dao, StorageDao storageDao) {
         this.dao = dao;
+        this.storageDao = storageDao;
     }
 
     public boolean add(EletricCarModel carModel, String carId, byte[] imgByte){
-       carModel.setPathImg(new FirebaseStorageDao().add(imgByte));
+       carModel.setPathImg(storageDao.add(imgByte, "eletric_car_models"));
        return this.dao.add(carModel, carId) != null;
     }
 
