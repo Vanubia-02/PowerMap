@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PowerMap</string>
-    <string name="add"> Adicionar </string>
+    <string name="add"> To add </string>
     <string name="edit"> Edit </string>
     <string name="remove"> Remove </string>
     <string name="see"> See </string>
     <string name="back_button">Back button </string>
     <string name="image_button">Add Image button</string>
     <string name="error_data">There was an error submitting data! Please try again later.</string>
+
+    <!-- Menu -->
+    <string name="profile"> Profile</string>
+    <string name="car"> Car </string>
+    <string name="schedule"> Schedule</string>
+    <string name="map"> Map </string>
+    <string name="users"> Users </string>
+    <string name="models"> Models </string>
+
+
 
     <!--    Car Model-->
     <string name="eletric">Eletric </string>

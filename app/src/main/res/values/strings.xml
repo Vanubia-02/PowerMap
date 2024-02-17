@@ -7,8 +7,17 @@
     <string name="see"> Visualizar </string>
     <string name="back_button">Botão de Voltar </string>
     <string name="image_button">Botão de Adicionar Imagem</string>
+    <string name="error_data">Houve um erro na submissão de dados! Tente novamanete mais tarde.</string>
 
-    <string name="error_data">Houve um errro na submissão de dados! Tente novamanete mais tarde.</string>
+    <!-- Menu -->
+    <string name="profile"> Perfil</string>
+    <string name="car"> Carro </string>
+    <string name="schedule"> Agenda</string>
+    <string name="map"> Mapa </string>
+    <string name="users"> Usuários </string>
+    <string name="models"> Modelos </string>
+
+
     <!-- Car Model-->
     <string name="eletric">Elétrico </string>
     <string name="hybrid">Hibrído</string>
@@ -23,5 +32,6 @@
     <string name="year_error">É necessário informar o ano! </string>
     <string name="energy_consumption_error">É necessário informar o consumo de energia! </string>
     <string name="fuel_consumption_error">É necessário informar o consumo de combustível! </string>
+    <!-- TODO: Remove or change this placeholder text -->
 
 </resources>
