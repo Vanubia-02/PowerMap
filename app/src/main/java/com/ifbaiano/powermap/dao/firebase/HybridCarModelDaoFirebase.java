@@ -2,8 +2,7 @@ package com.ifbaiano.powermap.dao.firebase;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -11,10 +10,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.ifbaiano.powermap.dao.contracts.DataCallback;
 import com.ifbaiano.powermap.dao.contracts.HybridCarModelDao;
 import com.ifbaiano.powermap.model.HybridCarModel;
-import com.ifbaiano.powermap.model.User;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;

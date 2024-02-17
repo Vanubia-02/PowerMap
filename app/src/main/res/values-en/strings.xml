@@ -8,6 +8,7 @@
     <string name="back_button">Back button </string>
     <string name="image_button">Add Image button</string>
     <string name="error_data">There was an error submitting data! Please try again later.</string>
+    <string name="image_not_found">Image not found!</string>
 
     <!-- Menu -->
     <string name="profile"> Profile</string>
@@ -22,11 +23,12 @@
     <!--    Car Model-->
     <string name="eletric">Eletric </string>
     <string name="hybrid">Hybrid </string>
-
     <string name="name_input">Enter the model name…</string>
     <string name="year_input">Enter the model year…</string>
     <string name="energy_consumption_input">Energy Consumption KwH/km…</string>
     <string name="fuel_consumption_input">Fuel Consumption Liter/km…</string>
+    <string name="wrong_year_error">Year reported is invalid</string>
+
 
     <string name="image_error">Image is required!</string>
     <string name="name_error">Name is required!</string>
