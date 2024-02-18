@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.ifbaiano.powermap.CarFragment;
-import com.ifbaiano.powermap.MapFragment;
-import com.ifbaiano.powermap.ProfileFragment;
+import com.ifbaiano.powermap.fragment.CarFragment;
+import com.ifbaiano.powermap.fragment.MapFragment;
+import com.ifbaiano.powermap.fragment.ProfileFragment;
 import com.ifbaiano.powermap.R;
-import com.ifbaiano.powermap.ScheduleFragment;
+import com.ifbaiano.powermap.fragment.ScheduleFragment;
 import com.ifbaiano.powermap.activity.carModel.ListCarModels;
 import com.ifbaiano.powermap.databinding.ActivityMenuBinding;
 

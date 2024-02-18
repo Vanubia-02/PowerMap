@@ -24,11 +24,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.ifbaiano.powermap.CarFragment;
-import com.ifbaiano.powermap.FragmentProfileAdmin;
-import com.ifbaiano.powermap.ModelsFragment;
+import com.ifbaiano.powermap.fragment.CarFragment;
+import com.ifbaiano.powermap.fragment.FragmentProfileAdmin;
+import com.ifbaiano.powermap.fragment.ModelsFragment;
 import com.ifbaiano.powermap.R;
-import com.ifbaiano.powermap.UsersFragment;
+import com.ifbaiano.powermap.fragment.UsersFragment;
 import com.ifbaiano.powermap.dao.contracts.EletricCarModelDao;
 import com.ifbaiano.powermap.dao.contracts.HybridCarModelDao;
 import com.ifbaiano.powermap.dao.contracts.StorageDao;

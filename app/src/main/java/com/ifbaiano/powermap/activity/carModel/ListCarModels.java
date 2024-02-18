@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.ifbaiano.powermap.CarFragment;
-import com.ifbaiano.powermap.FragmentProfileAdmin;
-import com.ifbaiano.powermap.ModelsFragment;
+import com.ifbaiano.powermap.fragment.CarFragment;
+import com.ifbaiano.powermap.fragment.FragmentProfileAdmin;
+import com.ifbaiano.powermap.fragment.ModelsFragment;
 import com.ifbaiano.powermap.R;
-import com.ifbaiano.powermap.UsersFragment;
+import com.ifbaiano.powermap.fragment.UsersFragment;
 import com.ifbaiano.powermap.databinding.ActivityListCarModelsBinding;
 
 public class ListCarModels extends AppCompatActivity {
