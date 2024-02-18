@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -19,16 +20,12 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.ifbaiano.powermap.fragment.CarFragment;
-import com.ifbaiano.powermap.fragment.FragmentProfileAdmin;
+import com.ifbaiano.powermap.factory.BitmapCustomFactory;
+import com.ifbaiano.powermap.factory.DataBindingFactory;
 import com.ifbaiano.powermap.fragment.ModelsFragment;
 import com.ifbaiano.powermap.R;
-import com.ifbaiano.powermap.fragment.UsersFragment;
 import com.ifbaiano.powermap.dao.contracts.EletricCarModelDao;
 import com.ifbaiano.powermap.dao.contracts.HybridCarModelDao;
 import com.ifbaiano.powermap.dao.contracts.StorageDao;
@@ -54,92 +51,35 @@ public class AddCarModelActivity extends AppCompatActivity {
     TextInputEditText name, year, fuelConsumption, energyConsumption;
     ProgressBar progressBar;
     ImageView imageView;
-    Boolean hasImg = false;
     AppCompatButton submitImgBtn, backButton, submitFormBtn;
     CarModelVerifier verifier;
     EletricCarModelDao eletricCarModelDao;
     HybridCarModelDao hybridCarModelDao;
     StorageDao storageDao;
     int type;
-    ByteArrayOutputStream byteArray = null;
-
+    byte[] byteArray = null;
+    DataBindingFactory bindingFactory;
+    BitmapCustomFactory bitmapCustomFactory;
     ActivityResultLauncher<Intent> launcher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == Activity.RESULT_OK
-                        && result.getData() != null) {
-                        Uri selectedImageUri = result.getData().getData();
-
-                        try {
-                            assert selectedImageUri != null;
-                            InputStream inputStream = getContentResolver().openInputStream(selectedImageUri);
-                            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-
-                            byteArray = new ByteArrayOutputStream();
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
-                            imageView.setImageBitmap(bitmap);
-                            submitImgBtn.setBackgroundResource(R.drawable.button_submit_image);
-
-                        } catch (FileNotFoundException e) {
-                            Toast.makeText(AddCarModelActivity.this, R.string.image_not_found, Toast.LENGTH_SHORT );
-                        }
-                }
-            }
+            new ActivityResultContracts.StartActivityForResult(), result ->  bitmapCustomFactory.onResult(result)
     );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityAddCarModelBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        replaceFragment(new ModelsFragment());
-
-        // chame o
-        binding.bottomNavigationMenuAdmin.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-
-            if (itemId == R.id.icon_car_admin) {
-                replaceFragment(new CarFragment());
-                Toast.makeText(this, "modelo", Toast.LENGTH_SHORT).show();
-
-            } else if (itemId == R.id.icon_useres_admin) {
-                replaceFragment(new UsersFragment());
-                Toast.makeText(this, "usuarios", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(this, ListCarModels.class);
-                startActivity(intent);
-            } else if (itemId == R.id.icon_profile_admin) {
-                replaceFragment(new FragmentProfileAdmin());
-                Toast.makeText(this, "perfil admin", Toast.LENGTH_SHORT).show();
-
-            }
-            return true;
-        });
-
-
         setContentView(R.layout.activity_add_car_model);
         type = R.id.hybrid;
 
-        eletricCarModelDao = new EletricCarModelDaoFirebase(getApplicationContext());
-        hybridCarModelDao = new HybridCarModelDaoFirebase(getApplicationContext());
-        storageDao = new StorageDaoFirebase();
-
-        this.verifier =  new CarModelVerifier(getApplicationContext());
-
+        this.doBinding();
         this.syncViewObjects();
+        this.makeInstances();
 
         submitFormBtn.setOnClickListener(v ->  submitForm());
         submitImgBtn.setOnClickListener(v -> submitImage());
         backButton.setOnClickListener(v -> backActivity());
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayoutAdmin, fragment);
-        fragmentTransaction.commit();
-    }
+
 
     public void onRadioButtonClicked(@NonNull View view) {
         boolean checked = ((RadioButton) view).isChecked();
@@ -160,6 +100,16 @@ public class AddCarModelActivity extends AppCompatActivity {
             submitFormBtn.setLayoutParams(params);
         }
 
+    }
+
+    private void makeInstances(){
+        eletricCarModelDao = new EletricCarModelDaoFirebase(getApplicationContext());
+        hybridCarModelDao = new HybridCarModelDaoFirebase(getApplicationContext());
+        storageDao = new StorageDaoFirebase();
+        verifier =  new CarModelVerifier(getApplicationContext());
+        bitmapCustomFactory = new BitmapCustomFactory(
+                this, byteArray, imageView, submitImgBtn
+        );
     }
 
     private void syncViewObjects(){
@@ -189,9 +139,9 @@ public class AddCarModelActivity extends AppCompatActivity {
         boolean verifyValid = false;
 
         if (type == R.id.eletric) {
-            verifyValid = verifier.verifyCarModel(name, year, energyConsumption, submitImgBtn, byteArray != null);
+            verifyValid = verifier.verifyCarModel(name, year, energyConsumption, submitImgBtn,   bitmapCustomFactory.getByteArray() != null);
         } else if (type == R.id.hybrid) {
-            verifyValid = verifier.verifyCarModel(name, year, energyConsumption, submitImgBtn, byteArray != null, fuelConsumption);
+            verifyValid = verifier.verifyCarModel(name, year, energyConsumption, submitImgBtn,   bitmapCustomFactory.getByteArray() != null, fuelConsumption);
         }
 
         if (verifyValid) {
@@ -207,7 +157,7 @@ public class AddCarModelActivity extends AppCompatActivity {
                                     Float.parseFloat(Objects.requireNonNull(energyConsumption.getText()).toString())
                             ),
                             null,
-                            byteArray.toByteArray()
+                            bitmapCustomFactory.getByteArray()
                     );
                 } else if (type == R.id.hybrid) {
                     success[0] = new HybridCarModelService(hybridCarModelDao, storageDao).add(
@@ -220,7 +170,7 @@ public class AddCarModelActivity extends AppCompatActivity {
                                     Float.parseFloat(Objects.requireNonNull(fuelConsumption.getText()).toString())
                             ),
                             null,
-                            byteArray.toByteArray()
+                            bitmapCustomFactory.getByteArray()
                     );
                 }
 
@@ -241,5 +191,14 @@ public class AddCarModelActivity extends AppCompatActivity {
         }
     }
 
+    private void doBinding(){
+        bindingFactory = new DataBindingFactory(this, R.id.frameLayoutAdminlist);
+        binding = ActivityAddCarModelBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        bindingFactory.replaceFragment(new ModelsFragment());
+
+        binding.bottomNavigationMenuAdmin.setOnItemSelectedListener(item -> bindingFactory.bindingMenu(item));
+
+    }
 
 }
