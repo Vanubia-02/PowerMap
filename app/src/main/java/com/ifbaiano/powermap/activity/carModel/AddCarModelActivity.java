@@ -1,11 +1,5 @@
 package com.ifbaiano.powermap.activity.carModel;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,14 +14,28 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.textfield.TextInputEditText;
+import com.ifbaiano.powermap.CarFragment;
+import com.ifbaiano.powermap.FragmentProfileAdmin;
+import com.ifbaiano.powermap.ModelsFragment;
 import com.ifbaiano.powermap.R;
+import com.ifbaiano.powermap.UsersFragment;
 import com.ifbaiano.powermap.dao.contracts.EletricCarModelDao;
 import com.ifbaiano.powermap.dao.contracts.HybridCarModelDao;
 import com.ifbaiano.powermap.dao.contracts.StorageDao;
 import com.ifbaiano.powermap.dao.firebase.EletricCarModelDaoFirebase;
-import com.ifbaiano.powermap.dao.firebase.StorageDaoFirebase;
 import com.ifbaiano.powermap.dao.firebase.HybridCarModelDaoFirebase;
+import com.ifbaiano.powermap.dao.firebase.StorageDaoFirebase;
+import com.ifbaiano.powermap.databinding.ActivityAddCarModelBinding;
 import com.ifbaiano.powermap.model.EletricCarModel;
 import com.ifbaiano.powermap.model.HybridCarModel;
 import com.ifbaiano.powermap.service.EletricCarModelService;
@@ -39,7 +47,10 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Objects;
 
+
 public class AddCarModelActivity extends AppCompatActivity {
+
+    ActivityAddCarModelBinding binding;
     TextInputEditText name, year, fuelConsumption, energyConsumption;
     ProgressBar progressBar;
     ImageView imageView;
@@ -79,6 +90,34 @@ public class AddCarModelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        binding = ActivityAddCarModelBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        replaceFragment(new ModelsFragment());
+
+        // chame o
+        binding.bottomNavigationMenuAdmin.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.icon_car_admin) {
+                replaceFragment(new CarFragment());
+                Toast.makeText(this, "modelo", Toast.LENGTH_SHORT).show();
+
+            } else if (itemId == R.id.icon_useres_admin) {
+                replaceFragment(new UsersFragment());
+                Toast.makeText(this, "usuarios", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(this, ListCarModels.class);
+                startActivity(intent);
+            } else if (itemId == R.id.icon_profile_admin) {
+                replaceFragment(new FragmentProfileAdmin());
+                Toast.makeText(this, "perfil admin", Toast.LENGTH_SHORT).show();
+
+            }
+            return true;
+        });
+
+
         setContentView(R.layout.activity_add_car_model);
         type = R.id.hybrid;
 
@@ -93,6 +132,13 @@ public class AddCarModelActivity extends AppCompatActivity {
         submitFormBtn.setOnClickListener(v ->  submitForm());
         submitImgBtn.setOnClickListener(v -> submitImage());
         backButton.setOnClickListener(v -> backActivity());
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayoutAdmin, fragment);
+        fragmentTransaction.commit();
     }
 
     public void onRadioButtonClicked(@NonNull View view) {
