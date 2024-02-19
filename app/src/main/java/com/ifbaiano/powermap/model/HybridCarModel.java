@@ -15,6 +15,9 @@ public class HybridCarModel extends EletricCarModel {
         this.fuelConsumption = fuelConsumption;
     }
 
+    public HybridCarModel() {
+    }
+
     public Float getFuelConsumption() {
         return fuelConsumption;
     }

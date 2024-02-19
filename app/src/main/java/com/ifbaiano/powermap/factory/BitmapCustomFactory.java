@@ -23,6 +23,8 @@ public class BitmapCustomFactory {
     private final ImageView imageView;
     AppCompatButton submitImgBtn;
 
+
+
     public BitmapCustomFactory(AppCompatActivity activity, byte[] byteArray, ImageView imageView, AppCompatButton submitImgBtn) {
         this.activity = activity;
         this.byteArray = byteArray;
@@ -42,8 +44,8 @@ public class BitmapCustomFactory {
                     Bitmap bitmap = android.graphics.BitmapFactory.decodeStream(inputStream);
 
                     ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
-                    byteArray = byteOutput.toByteArray();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteOutput);
+                    byteArray = byteOutput.toByteArray();
                     imageView.setImageBitmap(bitmap);
                     submitImgBtn.setBackgroundResource(R.drawable.button_submit_image);
 

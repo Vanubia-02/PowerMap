@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">PowerMap</string>
 
+    <string name="back">Voltar</string>
     <string name="add"> Adicionar </string>
     <string name="edit"> Editar </string>
     <string name="remove"> Remover </string>
@@ -19,6 +20,7 @@
     <string name="models"> Modelos </string>
 
     <!-- Car Model-->
+    <string name="search_model">Pesquisar modelo...</string>
     <string name="eletric">Elétrico </string>
     <string name="hybrid">Hibrído</string>
     <string name="name_input">Digite o nome do modelo…</string>
@@ -31,5 +33,8 @@
     <string name="year_error">É necessário informar o ano! </string>
     <string name="energy_consumption_error">É necessário informar o consumo de energia! </string>
     <string name="fuel_consumption_error">É necessário informar o consumo de combustível! </string>
+
+    <string name="energy_consumption_label">%s kWh/Km</string>
+    <string name="fuel_consumption_label">%s Litros/Km</string>
 
 </resources>

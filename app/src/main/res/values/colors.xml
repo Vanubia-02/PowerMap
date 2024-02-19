@@ -3,13 +3,15 @@
     <color name="black">#FF000000</color>
     <color name="medium_black">#020202</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="sub_background_form">#2C2739</color>
+    <color name="sub_background_form">#272332</color>
     <color name="sub_background_form_lighter">#44404E</color>
     <color name="red">#FE0000</color>
     <color name="red_custom">#E30C0C</color>
     <color name="dark_grey">#252525</color>
     <color name="medium_gray">#222B37</color>
     <color name="light_gray">#B1AFB8</color>
+    <color name="lighter_gray">#F2F2F2</color>
+
 
 
 

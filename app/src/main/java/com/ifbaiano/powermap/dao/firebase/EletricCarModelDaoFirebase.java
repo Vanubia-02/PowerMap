@@ -1,6 +1,8 @@
 package com.ifbaiano.powermap.dao.firebase;
 
 import android.content.Context;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.Tasks;
@@ -66,7 +68,9 @@ public class EletricCarModelDaoFirebase implements EletricCarModelDao {
     public  ArrayList<EletricCarModel> findAll() {
         Query query = firebaseDatabase.getReference(TABLE_NAME);
         try {
+            Log.d("CARMODELS", "passou aq");
             DataSnapshot dataSnapshot = Tasks.await(query.get());
+            Log.d("CARMODELS", "passou aq");
 
             if (dataSnapshot.exists()) {
                 ArrayList<EletricCarModel> carModels = new ArrayList<>();

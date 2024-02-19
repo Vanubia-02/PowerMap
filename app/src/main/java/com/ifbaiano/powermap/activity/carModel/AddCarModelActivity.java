@@ -1,13 +1,8 @@
 package com.ifbaiano.powermap.activity.carModel;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -38,12 +33,7 @@ import com.ifbaiano.powermap.model.HybridCarModel;
 import com.ifbaiano.powermap.service.EletricCarModelService;
 import com.ifbaiano.powermap.service.HybridCarModelService;
 import com.ifbaiano.powermap.verifier.CarModelVerifier;
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Objects;
-
 
 public class AddCarModelActivity extends AppCompatActivity {
 
@@ -133,6 +123,7 @@ public class AddCarModelActivity extends AppCompatActivity {
         startActivity(new Intent(AddCarModelActivity.this, ListCarModels.class));
     }
     private void submitForm() {
+
         progressBar.setVisibility(View.VISIBLE);
         submitFormBtn.setVisibility(View.GONE);
 

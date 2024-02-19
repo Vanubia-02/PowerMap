@@ -4,6 +4,8 @@ import com.ifbaiano.powermap.dao.contracts.EletricCarModelDao;
 import com.ifbaiano.powermap.dao.contracts.StorageDao;
 import com.ifbaiano.powermap.model.EletricCarModel;
 
+import java.util.ArrayList;
+
 public class EletricCarModelService {
     private EletricCarModelDao dao;
     private final StorageDao storageDao;
@@ -18,7 +20,9 @@ public class EletricCarModelService {
        return this.dao.add(carModel, carId) != null;
     }
 
-
+    public ArrayList<EletricCarModel> listAll(){
+        return this.dao.findAll();
+    }
     public EletricCarModelDao getDao() {
         return dao;
     }

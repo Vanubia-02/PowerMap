@@ -22,7 +22,6 @@ public class HybridCarModelDaoFirebase implements HybridCarModelDao {
     private final FirebaseDatabase firebaseDatabase;
 
     public HybridCarModelDaoFirebase(Context ctx) {
-
         FirebaseApp.initializeApp(ctx);
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
@@ -65,7 +64,7 @@ public class HybridCarModelDaoFirebase implements HybridCarModelDao {
 
     @Override
     public ArrayList<HybridCarModel> findAll() {
-        Query query = firebaseDatabase.getReference(TABLE_NAME).orderByChild("year");;
+        Query query = firebaseDatabase.getReference(TABLE_NAME);
         try {
             DataSnapshot dataSnapshot = Tasks.await(query.get());
 
