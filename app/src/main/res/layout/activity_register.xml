@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activity.users.RegisterActivity"
+android:background="@color/white">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/nameUser"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="469dp"
+        android:drawableEnd="@drawable/baseline_person"
+        android:handwritingBoundsOffsetRight="@dimen/cardview_compat_inset_shadow"
+        android:hint="@string/name"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColorHint="@color/red_custom" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/emailRegister"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="393dp"
+        android:drawableEnd="@drawable/baseline_email"
+        android:handwritingBoundsOffsetRight="@dimen/cardview_compat_inset_shadow"
+        android:hint="@string/email"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColorHint="@color/red_custom" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/passwordLogin2"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="233dp"
+        android:drawableEnd="@drawable/baseline_password"
+        android:hint="@string/password_confirm"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColorHint="@color/red_custom" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/enterLoginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="540dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="-4dp"
+        android:background="@drawable/button_red"
+        android:backgroundTint="@color/red"
+        android:end="@id/title"
+        android:hint="@string/add"
+        android:text="@string/register"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/passwordLogin"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="313dp"
+        android:drawableEnd="@drawable/baseline_password"
+        android:hint="@string/Password"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColorHint="@color/red_custom" />
+
+    <TextView
+        android:id="@+id/titleDecorationLogin"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="14dp"
+        android:text="@string/title_decoreition_register"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/backButonRegiter"
+        android:layout_width="36dp"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/baseline_arrow_back_"
+        android:contentDescription="@string/back_button"
+        android:drawableEnd="@drawable/baseline_arrow_back_25" />
+
+
+    <TextView
+    android:id="@+id/txtDecorationLogin"
+    android:layout_width="384dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginStart="6dp"
+    android:layout_marginTop="675dp"
+    android:layout_marginEnd="6dp"
+    android:text="@string/text_decoreition_login_two"
+    android:textAlignment="center"
+    android:textColor="@color/white"
+    android:textSize="19dp" />
+
+    <TextView
+        android:id="@+id/txtDecorationRegister"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="675dp"
+        android:layout_marginEnd="6dp"
+        android:text="@string/text_decoreition_login_two"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="19dp" />
+
+
+</RelativeLayout>

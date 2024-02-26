@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activity.users.InitialUsersActivity"
+android:background="@color/white">
+
+
+    <ImageView
+        android:id="@+id/imageViewDecoration"
+        android:layout_width="664dp"
+        android:layout_height="523dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-119dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="-134dp"
+        android:src="@drawable/map_decoration" />
+
+    <ImageView
+        android:id="@+id/imageViewInitial"
+        android:layout_width="339dp"
+        android:layout_height="192dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="36dp"
+        android:src="@drawable/img_byddolphin01" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/createBtn"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="505dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="-4dp"
+        android:background="@drawable/button_red"
+        android:backgroundTint="@color/red_custom"
+        android:end="@id/title"
+        android:hint="@string/create"
+        android:text="@string/create"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/enterBtn"
+        android:layout_width="342dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="575dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="-4dp"
+        android:background="@drawable/button_rounded_dark"
+        android:end="@id/title"
+        android:hint="@string/enter"
+        android:text="@string/enter"
+        android:backgroundTint="@color/white"
+        android:textAlignment="center"
+        android:textColor="@color/red_custom"
+        android:textColorHint="@color/red_custom" />
+
+    <TextView
+        android:id="@+id/titleInitial"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="363dp"
+        android:layout_marginEnd="17dp"
+        android:text="@string/title_decoreition_initial"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="45dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/titleInitial4"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="651dp"
+        android:layout_marginEnd="9dp"
+        android:text="@string/text_decoreition_initial"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="19dp"/>
+
+
+</RelativeLayout>

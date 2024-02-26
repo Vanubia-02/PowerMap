@@ -10,6 +10,28 @@
     <string name="image_button">Botão de Adicionar Imagem</string>
     <string name="image_not_found">Imagem não encontrada!</string>
     <string name="error_data">Houve um erro na submissão de dados! Tente novamanete mais tarde.</string>
+    <string name="enter">Entrar</string>
+    <string name="create">Criar</string>
+    <string name="register">Registrar</string>
+    <string name="name">Nome completo</string>
+    <string name="email">Email</string>
+    <string name="Password">senha</string>
+    <string name="password_confirm">Confirme a senha</string>
+    <string name="enter_google">Entre com o Google</string>
+
+
+    <!-- Decoração -->
+    <string name="text_decoreition_initial">Encontre o melhor lugar para recarregar as energias do seu caro!</string>
+    <string name="title_decoreition_initial">Seja Bem Vindo  ao PowerMap</string>
+    <string name="title_decoreition_login">Entre Com  Sua Conta</string>
+    <string name="subtext_decoreition_login">Não possui conta?</string>
+    <string name="subtext_decoreition_login_two">Faça registro</string>
+    <string name="text_decoreition_login_two">Energia é o que o seu carro precisa!</string>
+    <string name="or">ou</string>
+    <string name="subtext_decoreition_register">Já possui conta?</string>
+    <string name="title_decoreition_register">Registre-se</string>
+    <string name="subtext_decoreition_register_two">Entre</string>
+
 
     <!-- Menu -->
     <string name="profile"> Perfil</string>
@@ -36,5 +58,12 @@
 
     <string name="energy_consumption_label">%s kWh/Km</string>
     <string name="fuel_consumption_label">%s Litros/Km</string>
+
+    <!--Login com Google-->
+    <string name="default_web_client_id">936668570280-m465psejead5oppnb8a36r52spb7761p.apps.googleusercontent.com</string>
+    <!-- Strings used for fragments for navigation -->
+
+
+
 
 </resources>
