@@ -2,6 +2,7 @@ package com.ifbaiano.powermap.factory;
 
 import android.content.Intent;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -9,11 +10,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.ifbaiano.powermap.R;
-import com.ifbaiano.powermap.activity.carModel.AddCarModelActivity;
 import com.ifbaiano.powermap.activity.carModel.ListCarModels;
-import com.ifbaiano.powermap.fragment.CarFragment;
 import com.ifbaiano.powermap.fragment.FragmentProfileAdmin;
 import com.ifbaiano.powermap.fragment.MapFragment;
+import com.ifbaiano.powermap.fragment.ModelsFragment;
 import com.ifbaiano.powermap.fragment.ProfileFragment;
 import com.ifbaiano.powermap.fragment.ScheduleFragment;
 import com.ifbaiano.powermap.fragment.UsersFragment;
@@ -41,29 +41,64 @@ public class DataBindingFactory {
         Intent intent = null;
 
         if (itemId == R.id.icon_car_admin) {
-            replaceFragment(new CarFragment());
-            intent = new Intent(activity.getApplicationContext(), AddCarModelActivity.class);
+            replaceFragment(new ModelsFragment());
+            if (!(activity instanceof ListCarModels)) {
+                intent = new Intent(activity.getApplicationContext(), ListCarModels.class);
+                activity.startActivity(intent);
+            }
 
         } else if (itemId == R.id.icon_useres_admin) {
             replaceFragment(new UsersFragment());
+            Toast.makeText(activity, "usarios em admin", Toast.LENGTH_SHORT).show();
+
+            // if (!(activity instanceof ListCarModels)) {
+                //intent = new Intent(activity.getApplicationContext(), ListCarModels.class);
+                //activity.startActivity(intent);
+            //}
 
         } else if (itemId == R.id.icon_profile_admin) {
 
             replaceFragment(new FragmentProfileAdmin());
+            Toast.makeText(activity, "perfil do admin", Toast.LENGTH_SHORT).show();
+
+            // if (!(activity instanceof ListCarModels)) {
+            //intent = new Intent(activity.getApplicationContext(), ListCarModels.class);
+            //activity.startActivity(intent);
+            //}
         }
         else if (itemId == R.id.icon_car_user) {
-            replaceFragment(new CarFragment());
-            intent = new Intent(activity, ListCarModels.class);
-
+            Toast.makeText(activity, "carros do usario", Toast.LENGTH_SHORT).show();
+           //replaceFragment(new CarFragment());
+            //if (!(activity instanceof ListCarModels)) {
+           //     intent = new Intent(activity.getApplicationContext(), ListCarModels.class);
+           //     activity.startActivity(intent);
+            //}
         } else if (itemId == R.id.icon_map_user) {
             replaceFragment(new MapFragment());
+            Toast.makeText(activity, "mapa do usuario", Toast.LENGTH_SHORT).show();
+
+            // if (!(activity instanceof ListCarModels)) {
+            //intent = new Intent(activity.getApplicationContext(), ListCarModels.class);
+            //activity.startActivity(intent);
+            //}
 
         } else if (itemId == R.id.icon_schedule_user) {
             replaceFragment(new ScheduleFragment());
+            Toast.makeText(activity, "agenda do usario", Toast.LENGTH_SHORT).show();
+
+            // if (!(activity instanceof ListCarModels)) {
+            //intent = new Intent(activity.getApplicationContext(), ListCarModels.class);
+            //activity.startActivity(intent);
+            //}
 
         } else if (itemId == R.id.icon_profile_user) {
             replaceFragment(new ProfileFragment());
+            Toast.makeText(activity, "perfil do usario", Toast.LENGTH_SHORT).show();
 
+            // if (!(activity instanceof ListCarModels)) {
+            //intent = new Intent(activity.getApplicationContext(), ListCarModels.class);
+            //activity.startActivity(intent);
+            //}
         }
 
         if (intent != null) {

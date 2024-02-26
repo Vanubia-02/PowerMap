@@ -11,6 +11,27 @@
     <string name="image_button">Add Image button</string>
     <string name="error_data">There was an error submitting data! Please try again later.</string>
     <string name="image_not_found">Image not found!</string>
+    <string name="enter">Enter</string>
+    <string name="create">Create</string>
+    <string name="register">Register</string>
+    <string name="name">Full name</string>
+    <string name="email">Email</string>
+    <string name="Password">Password</string>
+    <string name="password_confirm">Confirm the password</string>
+    <string name="enter_google">enter with google</string>
+
+
+    <!-- Decoração -->
+    <string name="text_decoreition_initial">Find the best place to recharge your car\'s energies!</string>
+    <string name="title_decoreition_initial">Welcome to PowerMap</string>
+    <string name="title_decoreition_login">Sign in with Your Account</string>
+    <string name="subtext_decoreition_login">Don\'t have an account?</string>
+    <string name="subtext_decoreition_login_two">Register now</string>
+    <string name="text_decoreition_login_two">Energy is what your car needs!</string>
+    <string name="or">or</string>
+    <string name="subtext_decoreition_register">Already have an account?</string>
+    <string name="title_decoreition_register">Register</string>
+    <string name="subtext_decoreition_register_two">Enter</string>
 
     <!-- Menu -->
     <string name="profile"> Profile</string>
@@ -40,6 +61,10 @@
     <string name="year_error">Year is required!</string>
     <string name="energy_consumption_error">Energy consumption is required!</string>
     <string name="fuel_consumption_error">Fuel consumption is required!</string>
+
+    <!--Login com Google-->
+    <string name="default_web_client_id">936668570280-m465psejead5oppnb8a36r52spb7761p.apps.googleusercontent.com</string>
+
 
 
 </resources>
