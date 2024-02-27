@@ -3,10 +3,10 @@
     <string name="app_name">PowerMap</string>
 
     <string name="back">Back</string>
-    <string name="add"> Add </string>
-    <string name="edit"> Edit </string>
-    <string name="remove"> Remove </string>
-    <string name="see"> See </string>
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="see">See</string>
     <string name="back_button">Back button </string>
     <string name="image_button">Add Image button</string>
     <string name="error_data">There was an error submitting data! Please try again later.</string>
@@ -18,7 +18,12 @@
     <string name="email">Email</string>
     <string name="Password">Password</string>
     <string name="password_confirm">Confirm the password</string>
-    <string name="enter_google">enter with google</string>
+    <string name="enter_google">Enter with google</string>
+    <string name="editPassword">Edit password</string>
+    <string name="add_img">Add image</string>
+
+
+
 
 
     <!-- Decoração -->
@@ -34,20 +39,18 @@
     <string name="subtext_decoreition_register_two">Enter</string>
 
     <!-- Menu -->
-    <string name="profile"> Profile</string>
-    <string name="car"> Car </string>
-    <string name="schedule"> Schedule</string>
-    <string name="map"> Map </string>
-    <string name="users"> Users </string>
-    <string name="models"> Models </string>
-
-
+    <string name="profile">Profile</string>
+    <string name="car">Car</string>
+    <string name="schedule">Schedule</string>
+    <string name="map">Map</string>
+    <string name="users">Users</string>
+    <string name="models">Models</string>
 
     <!--    Car Model-->
     <string name="search_model">Search model...</string>
 
-    <string name="eletric">Eletric </string>
-    <string name="hybrid">Hybrid </string>
+    <string name="eletric">Eletric</string>
+    <string name="hybrid">Hybrid</string>
     <string name="name_input">Enter the model name…</string>
     <string name="year_input">Enter the model year…</string>
     <string name="energy_consumption_input">Energy Consumption KwH/km…</string>
@@ -64,7 +67,6 @@
 
     <!--Login com Google-->
     <string name="default_web_client_id">936668570280-m465psejead5oppnb8a36r52spb7761p.apps.googleusercontent.com</string>
-
 
 
 </resources>

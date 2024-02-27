@@ -9,10 +9,6 @@ import com.ifbaiano.powermap.factory.DataBindingFactory;
 import com.ifbaiano.powermap.fragment.CarFragment;
 
 
-
-
-
-
 public class ProfileActivity extends AppCompatActivity {
     DataBindingFactory bindingFactory;
     ActivityProfileBinding binding;
@@ -24,6 +20,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         this.doBinding();
+
     }
 
     private void doBinding(){

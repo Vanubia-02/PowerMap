@@ -4,14 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sub_background_form_lighter"
+    android:background="@color/white"
     tools:context=".activity.users.ProfileActivity">
 
+    <ImageView
+        android:id="@+id/EditimgProfile"
+        android:layout_width="match_parent"
+        android:layout_height="271dp"
+        app:srcCompat="@drawable/baseline_person" />
+
+    <ImageView
+        android:id="@+id/baseEditProfile"
+        android:layout_width="match_parent"
+        android:layout_height="425dp"
+
+        android:layout_above="@+id/bottomNavigationMenuProfile"
+        android:layout_marginBottom="-6dp"
+        app:srcCompat="@drawable/form_container" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submitImageProfileEdit"
+        android:layout_width="50dp"
+        android:layout_height="41dp"
+        android:contentDescription="Adicionar imagem"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/button_submit_image"
+        android:paddingStart="13dp"
+        android:paddingBottom="12dp"
+
+        android:drawableBottom="@drawable/baseline_add_photo_alternate_24" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editProfileUser"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="402dp"
+        android:drawableEnd="@drawable/baseline_person"
+        android:handwritingBoundsOffsetRight="@dimen/cardview_compat_inset_shadow"
+        android:hint="@string/name"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColorHint="@color/red_custom" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editEmailUser"
+        style="@style/EditTextWithBorderBlack"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="330dp"
+        android:drawableEnd="@drawable/baseline_password"
+        android:hint="@string/email"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColorHint="@color/red_custom" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/editPasswordProfileBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="-4dp"
+        android:background="@drawable/button_red"
+        android:backgroundTint="@color/red"
+        android:end="@id/title"
+        android:textAllCaps="false"
+        android:text="@string/editPassword"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/editProfileBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="555dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="-4dp"
+        android:background="@drawable/button_rounded_dark"
+        android:backgroundTint="@color/dark_grey"
+        android:end="@id/title"
+        android:text="@string/edit"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <FrameLayout
         android:id="@+id/frameLayoutUserProfile"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="411dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationMenuProfile">
 
     </FrameLayout>
@@ -23,7 +133,13 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:background="@color/white"
+        app:itemIconSize="27dp"
+        app:itemTextColor="@drawable/icon_tint_selector"
+        app:itemIconTint="@drawable/icon_tint_selector"
+        app:itemActiveIndicatorStyle="@color/red_custom"
+        app:itemRippleColor="@color/red_custom"
         app:menu="@menu/menu_user" />
+
 
 
 
