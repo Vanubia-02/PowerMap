@@ -41,11 +41,14 @@ public class DataBindingFactory {
         Intent intent = null;
 
         if (itemId == R.id.icon_car_admin) {
+
             replaceFragment(new ModelsFragment());
             if (!(activity instanceof ListCarModels)) {
+
                 intent = new Intent(activity.getApplicationContext(), ListCarModels.class);
                 activity.startActivity(intent);
             }
+
 
         } else if (itemId == R.id.icon_useres_admin) {
             replaceFragment(new UsersFragment());
@@ -109,5 +112,7 @@ public class DataBindingFactory {
         return false;
 
     }
+
+
 
 }
